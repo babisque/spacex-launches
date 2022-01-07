@@ -1,0 +1,68 @@
+:root {
+    --smaller: .75;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 100)),
+    url("/assets/images/pexels-pixabay-2166.jpg") no-repeat center center;
+    backdrop-filter: blur(5px);
+    background-size: cover;
+    display: flex;
+    font-family: Raleway, Montserrat, sans-serif;
+}
+
+.main {
+    color: #D9D9D9;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-weight: normal;
+    letter-spacing: .125rem;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+li {
+    display: inline-block;
+    font-size: 1.5rem;
+    list-style-type: none;
+    padding: 1em;
+    text-transform: uppercase;
+}
+
+#days, #hours, #minutes, #seconds {
+    font-weight: bold;
+}
+
+li span {
+    display: block;
+    font-size: 4.5rem;
+}
+
+@media all and (max-width: 768px) {
+    h1 {
+        font-size: calc(1.5rem * var(--smaller));
+    }
+
+    li {
+        font-size: calc(1.125rem * var(--smaller));
+    }
+
+    li span {
+        font-size: calc(3.375rem * var(--smaller));
+    }
+}
