@@ -30,7 +30,7 @@
         const hour = minute * 60;
         const day = hour * 24;
 
-        let launchDate = new Date("<?= esc($date_launch); ?>"); // data local do lançamento
+        let launchDate = new Date("<?= esc($date_launch); ?>");
 
         let timer = setInterval(function () {
             let today = new Date().getTime();

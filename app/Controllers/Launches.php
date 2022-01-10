@@ -2,9 +2,9 @@
 
 namespace App\Controllers;
 
-class Rockets extends BaseController
+class Launches extends BaseController
 {
-    public function nextLaunch()
+    public function next()
     {
         $options = [
             'baseURI' => 'https://api.spacexdata.com',
