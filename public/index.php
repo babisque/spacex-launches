@@ -1,37 +1,19 @@
 <?php
 
-// Path to the front controller (this file)
-define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
+require __DIR__ . '/../vendor/autoload.php';
 
-/*
- *---------------------------------------------------------------
- * BOOTSTRAP THE APPLICATION
- *---------------------------------------------------------------
- * This process sets up the path constants, loads and registers
- * our autoloader, along with Composer's, loads our constants
- * and fires up an environment-specific bootstrapping.
- */
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
-// Ensure the current directory is pointing to the front controller's directory
-chdir(__DIR__);
+$request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
+    $_SERVER, $_GET, $_POST, $_COOKIE, $_FILES
+);
 
-// Load our paths config file
-// This is the line that might need to be changed, depending on your folder structure.
-$pathsConfig = FCPATH . '../app/Config/Paths.php';
-// ^^^ Change this if you move your application folder
-require realpath($pathsConfig) ?: $pathsConfig;
+$router = new League\Route\Router;
 
-$paths = new Config\Paths();
+$router->map('GET', '/', 'Spacex\Controller\Launches::nextLaunch');
+$router->map('GET', '/latest', 'Spacex\Controller\Launches::pastLaunch');
 
-// Location of the framework bootstrap file.
-$bootstrap = rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'bootstrap.php';
-$app       = require realpath($bootstrap) ?: $bootstrap;
 
-/*
- *---------------------------------------------------------------
- * LAUNCH THE APPLICATION
- *---------------------------------------------------------------
- * Now that everything is setup, it's time to actually fire
- * up the engines and make this app do its thang.
- */
-$app->run();
+$response = $router->dispatch($request);
+(new Laminas\HttpHandlerRunner\Emitter\SapiEmitter)->emit($response);
