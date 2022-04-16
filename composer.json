@@ -7,6 +7,7 @@
     "require": {
         "league/route": "^5.1",
         "laminas/laminas-diactoros": "^2.9",
-        "laminas/laminas-httphandlerrunner": "^2.1"
+        "laminas/laminas-httphandlerrunner": "^2.1",
+        "ext-json": "*"
     }
 }

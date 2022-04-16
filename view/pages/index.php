@@ -1,5 +1,5 @@
 <?php include __DIR__ . '/../templates/header.php'; ?>
-<!-- <?php include __DIR__ . '/../templates/navbar.php'; ?> -->
+<?php include __DIR__ . '/../templates/navbar.php'; ?>
 
     <div class="main">
         <h1 id="title">Next launch</h1>
