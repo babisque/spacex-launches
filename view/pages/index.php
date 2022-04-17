@@ -20,7 +20,7 @@
         const hour = minute * 60;
         const day = hour * 24;
 
-        let launchDate = new Date("<?= $date_launch; ?>");
+        let launchDate = new Date("<?= $launch->date_utc; ?>");
 
         let timer = setInterval(function () {
             let today = new Date().getTime();
